@@ -1,7 +1,7 @@
 FROM java:8u111-jre
 
 ARG HIVE_VERSION=2.1.1
-ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/apache-hive-${HADOOP_VERSION}-bin.tar.gz /usr/local
+ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
 
 
 
