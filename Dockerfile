@@ -13,7 +13,7 @@ RUN \
 
 ADD mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
 ADD bootstrap.sh /tmp/hadoop-config/bootstrap.sh
-COPY etc $HIVE_HOME
+ADD etc $HIVE_HOME/etc
 WORKDIR $HIVE_HOME
 
 
