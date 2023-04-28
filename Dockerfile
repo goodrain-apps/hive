@@ -1,7 +1,7 @@
 FROM java:8u111-jre
 
 ARG HIVE_VERSION=2.1.1
-ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
+ADD apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
 
 
 
@@ -9,11 +9,11 @@ ENV HIVE_HOME=/usr/local/hive \
     PATH=${PATH}:${HIVE_HOME}/bin
 
 RUN \
-  cd /usr/local && ln -s ./apache-hive-${HIVE_VERSION}-bin have
+  cd /usr/local && ln -s ./apache-hive-${HIVE_VERSION}-bin hive
 
-ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/mysql-connector/mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
+ADD mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
 ADD bootstrap.sh /tmp/hadoop-config/bootstrap.sh
-ADD etc $HIVE_HOME
+ADD etc $HIVE_HOME/
 WORKDIR $HIVE_HOME
 
 
