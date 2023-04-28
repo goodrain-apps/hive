@@ -18,9 +18,9 @@ CONFIG_DIR="/tmp/hive-config"
 # Copy config files from volume mount
 # ------------------------------------------------------
 
-for f in hive_site.xml; do
+for f in hive-site.xml; do
     if [[ -e ${CONFIG_DIR}/$f ]]; then
-        cp ${CONFIG_DIR}/$f $HIVE_HOME/etc/$f
+        cp ${CONFIG_DIR}/$f $HIVE_HOME/conf/$f
     else
         echo "ERROR: Could not find $f in $CONFIG_DIR"
         exit 1
@@ -32,8 +32,8 @@ done
 # Start HIVE
 # ------------------------------------------------------
 if [[ "${HIVE_ROLE}" == "hiveserver2" ]]; then
-    $HIVE_HOME/bin/hive --service metastore -p ${PORT} --hiveconf $HIVE_HOME/etc/hive_site.xml
-    $HIVE_HOME/bin/hive --service hiveserver2 --hiveconf $HIVE_HOME/etc/hive_site.xml
+    $HIVE_HOME/bin/hive --service metastore -p ${PORT}
+    $HIVE_HOME/bin/hive --service hiveserver2
 fi
 
 
