@@ -13,10 +13,11 @@ RUN \
 
 ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/mysql-connector/mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
 ADD bootstrap.sh /tmp/hadoop-config/bootstrap.sh
-ADD etc/hive-env.sh $HIVE_HOME/etc/hive/hive-env.sh
+ADD etc $HIVE_HOME
 WORKDIR $HIVE_HOME
 
 
 EXPOSE  9083 9084
 
-CMD [ "/bin/bash", "/tmp/hadoop-config/bootstrap.sh", "-d" ]
+ENTRYPOINT [ "/tmp/hadoop-config/bootstrap.sh"]
+CMD [ "-d" ]
