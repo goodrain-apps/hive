@@ -32,27 +32,8 @@ done
 # Start HIVE
 # ------------------------------------------------------
 if [[ "${HIVE_ROLE}" == "hiveserver2" ]]; then
-
-    $HIVE_HOME/bin/hive --service hiveserver2 --hiveconf $HIVE_HOME/etc/hive_site.xml
     $HIVE_HOME/bin/hive --service metastore -p ${PORT} --hiveconf $HIVE_HOME/etc/hive_site.xml
-
-fi
-# ------------------------------------------------------
-# Start DATA NODE
-# ------------------------------------------------------
-if [[ "${HIVE_ROLE}" == "metastore" ]]; then
-
-    #  Wait (with timeout) for namenode
-    #   TMP_URL="http://hive-hive-hdfs-nn:9870"
-    #   if timeout 5m bash -c "until curl -sf $TMP_URL; do echo Waiting for $TMP_URL; sleep 5; done"; then
-    #     $HIVE_HOME/bin/hdfs --loglevel INFO --daemon start datanode
-    #   else
-    #     echo "$0: Timeout waiting for $TMP_URL, exiting."
-    #     exit 1
-    #   fi
-
-    $HIVE_HOME/bin/hive --service metastore -p ${PORT}
-
+    $HIVE_HOME/bin/hive --service hiveserver2 --hiveconf $HIVE_HOME/etc/hive_site.xml
 fi
 
 
