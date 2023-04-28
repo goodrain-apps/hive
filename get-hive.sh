@@ -1,4 +1,4 @@
-HIVE_VERSION=2.1.1
+HIVE_VERSION=3.0.0
 HADOOP_VERSION=3.0.0
 
 wget https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/hadoop-${HADOOP_VERSION}.tar.gz

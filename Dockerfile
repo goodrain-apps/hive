@@ -1,6 +1,6 @@
 FROM java:8u111-jre
 
-ARG HIVE_VERSION=2.1.1
+ARG HIVE_VERSION=3.0.0
 ADD apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
 
 ARG HADOOP_VERSION=3.0.0
