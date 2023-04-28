@@ -27,16 +27,6 @@ for f in hive_site.xml; do
     fi
 done
 
-# ------------------------------------------------------
-# installing libraries if any
-# (resource urls added comma separated to the ACP system variable)
-# ------------------------------------------------------
-cd $HIVE_HOME/share/hive/common
-for cp in ${ACP//,/ }; do
-    echo == $cp
-    curl -LO $cp
-done
-cd -
 
 # ------------------------------------------------------
 # Start HIVE
