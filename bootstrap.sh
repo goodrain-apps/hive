@@ -6,7 +6,7 @@ echo Starting
 
 echo Using ${HIVE_HOME} as HIVE_HOME
 
-. $HIVE_HOME/etc/hive/hive-env.sh
+. $HIVE_HOME/etc/hive-env.sh
 
 # ------------------------------------------------------
 # Directory to find config artifacts
@@ -20,8 +20,7 @@ CONFIG_DIR="/tmp/hive-config"
 
 for f in hive_site.xml; do
     if [[ -e ${CONFIG_DIR}/$f ]]; then
-        mkdir -p $HIVE_HOME/etc/hive/
-        cp ${CONFIG_DIR}/$f $HIVE_HOME/etc/hive/$f
+        cp ${CONFIG_DIR}/$f $HIVE_HOME/etc/$f
     else
         echo "ERROR: Could not find $f in $CONFIG_DIR"
         exit 1
@@ -44,8 +43,8 @@ cd -
 # ------------------------------------------------------
 if [[ "${HIVE_ROLE}" == "hiveserver2" ]]; then
 
-    $HIVE_HOME/bin/hive --service hiveserver2 --hiveconf $HIVE_HOME/etc/hive/hive_site.xml
-    $HIVE_HOME/bin/hive --service metastore -p ${PORT} --hiveconf $HIVE_HOME/etc/hive/hive_site.xml
+    $HIVE_HOME/bin/hive --service hiveserver2 --hiveconf $HIVE_HOME/etc/hive_site.xml
+    $HIVE_HOME/bin/hive --service metastore -p ${PORT} --hiveconf $HIVE_HOME/etc/hive_site.xml
 
 fi
 # ------------------------------------------------------
