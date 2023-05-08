@@ -32,21 +32,8 @@ done
 # Start HIVE
 # ------------------------------------------------------
 if [[ "${HIVE_ROLE}" == "hiveserver2" ]]; then
-    $HIVE_HOME/bin/hive --service metastore -p ${PORT}
+    $HIVE_HOME/bin/hive --service metastore -p ${PORT} &
     $HIVE_HOME/bin/hive --service hiveserver2
-fi
-
-
-# ------------------------------------------------------
-# Tail logfiles for daemonized workloads (parameter -d)
-# ------------------------------------------------------
-if [[ $1 == "-d" ]]; then
-    until
-        find ${HIVE_HOME}/logs -mmin -1 | egrep -q '.*'
-        echo "$(date): Waiting for logs..."
-    do sleep 2; done
-    tail -F ${HIVE_HOME}/logs/* &
-    while true; do sleep 1000; done
 fi
 
 # ------------------------------------------------------
