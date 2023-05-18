@@ -1,4 +1,4 @@
-FROM mysql:5.6
+FROM mysql:5.7
 
 ENV TZ=Asia/Shanghai \
     MYSQL_ROOT_PASSWORD=root \
