@@ -19,9 +19,9 @@ RUN curl https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/apache-hi
     curl https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/mysql-connector/mysql-connector-j-8.0.32.jar -o /tmp/mysql-connector-j-8.0.32.jar && \
     tar xzf /tmp/hive.tar.gz -C  /usr/local && \
     tar xzf /tmp/hadoop.tar.gz  -C  /usr/local && \
+    cd /usr/local && ln -s ./apache-hive-${HIVE_VERSION}-bin hive && ln -s ./hadoop-${HADOOP_VERSION} hadoop && \
     mv /tmp/mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib && \
-    rm -rf /tmp/*.tar.gz && \
-    cd /usr/local && ln -s ./apache-hive-${HIVE_VERSION}-bin hive && ln -s ./hadoop-${HADOOP_VERSION} hadoop
+    rm -rf /tmp/*.tar.gz
 
 ADD bootstrap.sh /tmp/hadoop-config/bootstrap.sh
 ADD etc $HIVE_HOME/etc
