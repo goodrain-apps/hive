@@ -20,7 +20,8 @@ ENV HIVE_HOME=/usr/local/hive \
 RUN \
   cd /usr/local && ln -s ./apache-hive-${HIVE_VERSION}-bin hive && ln -s ./hadoop-${HADOOP_VERSION} hadoop
 
-ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/mysql-connector/mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
+ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/mysql-connector/mysql-connector-j-8.0.32.jar /tmp
+RUN mv /tmp/mysql-connector-j-8.0.32.jar ${HIVE_HOME}/lib
 ADD bootstrap.sh /tmp/hadoop-config/bootstrap.sh
 ADD etc $HIVE_HOME/etc
 WORKDIR $HIVE_HOME
