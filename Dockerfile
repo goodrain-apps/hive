@@ -1,10 +1,10 @@
 FROM java:8u111-jre
 
-ARG HIVE_VERSION=3.0.0
-ADD apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
+ARG HIVE_VERSION=4.0.0-alpha-2
+ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/apache-hive-${HIVE_VERSION}-bin.tar.gz /usr/local
 
 ARG HADOOP_VERSION=3.0.0
-ADD hadoop-${HADOOP_VERSION}.tar.gz /usr/local
+ADD https://goodrain-pkg.oss-cn-shanghai.aliyuncs.com/pkg/bigdata/hadoop-${HADOOP_VERSION}.tar.gz /usr/local
 
 ENV HIVE_HOME=/usr/local/hive \
     HADOOP_HOME=/usr/local/hadoop \
